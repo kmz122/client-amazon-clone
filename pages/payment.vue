@@ -95,7 +95,7 @@ export default {
     return {
       error: "",
       stripe: null,
-      card: null
+      card: null,
     };
   },
 
@@ -103,8 +103,9 @@ export default {
     ...mapGetters([
       "getCart",
       "getCartTotalPriceWithShipping",
-      "getEstimatedDelivery"
-    ])
+      "getEstimatedDelivery",
+      "getOrderPlacedDate",
+    ]),
   },
 
   mounted() {
@@ -132,7 +133,8 @@ export default {
           token: this.token,
           totalPrice: this.getCartTotalPriceWithShipping,
           cart: this.getCart,
-          estimatedDelivery: this.getEstimatedDelivery
+          estimatedDelivery: this.getEstimatedDelivery,
+          placedDate: this.getOrderPlacedDate,
         });
 
         if (response.success) {
@@ -145,8 +147,8 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

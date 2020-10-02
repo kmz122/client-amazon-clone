@@ -39,7 +39,7 @@
 
               <div class="a-row a-spacing-top-large">
                 <h2>Add photo or video</h2>
-                <p style="font-size: 14px; font-weight: 700;">
+                <p style="font-size: 14px; font-weight: 700">
                   Shoppers find images and videos more helpful than text alone.
                 </p>
               </div>
@@ -59,7 +59,7 @@
                 <input
                   type="text"
                   class="a-input-text"
-                  style="width: 70%;"
+                  style="width: 70%"
                   placeholder="What's most important to know?"
                   v-model="headline"
                 />
@@ -69,7 +69,7 @@
                 <h2 class="a-spacing-base">Write your review</h2>
                 <textarea
                   placeholder="What do you like or dislike? What did you see this product for?"
-                  style="height:6em; width: 100%;"
+                  style="height: 6em; width: 100%"
                   v-model="body"
                 ></textarea>
               </div>
@@ -78,7 +78,7 @@
             <br />
             <hr />
             <div class="a-spacing-top-medium">
-              <p style="font-size: 14px; font-weight: 700;">
+              <p style="font-size: 14px; font-weight: 700">
                 This is how you'll appear to other customers:
               </p>
               <div class="media a-spacing-top-large">
@@ -86,14 +86,14 @@
                   <img
                     src="/img/avatar.png"
                     class="img-fluid"
-                    style="width: 50px;"
+                    style="width: 50px"
                   />
                 </div>
-                <div class="media-body pl-3 pt-2">
+                <div v-if="$auth.$state.user" class="media-body pl-3 pt-2">
                   <input
                     type="text"
                     class="a-input-text"
-                    style="width: 100%;"
+                    style="width: 100%"
                     :value="$auth.$state.user.name"
                   />
                 </div>
@@ -128,7 +128,7 @@ import StarRating from "vue-star-rating";
 
 export default {
   components: {
-    StarRating
+    StarRating,
   },
 
   async asyncData({ $axios, params }) {
@@ -137,7 +137,7 @@ export default {
       let response = await $axios.$get(`/api/products/${params.id}`);
 
       return {
-        product: response.product
+        product: response.product,
       };
     } catch (error) {
       console.log(error);
@@ -150,7 +150,7 @@ export default {
       body: "",
       headline: "",
       selectedFile: null,
-      fileName: ""
+      fileName: "",
     };
   },
 
@@ -184,7 +184,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>

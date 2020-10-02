@@ -43,7 +43,7 @@
             </ul>
           </div>
 
-          <div class="orderContent">
+          <div class="orderContent" v-for="order in orders" :key="order._id">
             <div class="orderContentHeader">
               <div class="row">
                 <div
@@ -54,9 +54,9 @@
                       >ORDER PLACED</span
                     >
                     <br />
-                    <span class="a-size-base a-text-bold a-color-secondary"
-                      >May 16, 2016</span
-                    >
+                    <span class="a-size-base a-text-bold a-color-secondary">{{
+                      order.placedDate
+                    }}</span>
                   </div>
                 </div>
                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
@@ -64,7 +64,7 @@
                     <span class="a-size-mini a-color-secondary">TOTAL</span>
                     <br />
                     <span class="a-size-base a-text-bold a-color-secondary"
-                      >$904.85</span
+                      >${{ order.totalPrice }}</span
                     >
                   </div>
                 </div>
@@ -74,7 +74,7 @@
                     <br />
                     <!-- Owner's name -->
                     <a href class="a-size-base font-weight-bold a-link-normal">
-                      {{ $auth.$state.user.name }}
+                      {{ loggedInUser.name }}
                       <i class="far fa-chevron-down"></i>
                     </a>
                   </div>
@@ -113,11 +113,7 @@
               </div>
             </div>
             <!-- Orders body -->
-            <div
-              class="orderContentBodyAlt"
-              v-for="order in orders"
-              :key="order._id"
-            >
+            <div class="orderContentBodyAlt">
               <div class="a-row">
                 <h1
                   class="a-size-medium a-text-bold"
@@ -191,7 +187,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters(["loggedInUser"]),
+  },
+
   async asyncData({ $axios }) {
     try {
       // let response = await $axios.$get("/api/orders");
@@ -200,11 +202,21 @@ export default {
       console.log(response.products);
 
       return {
-        orders: response.products
+        orders: response.products,
       };
     } catch (error) {
       console.log(error);
     }
-  }
+  },
+
+  // methods: {
+  //   orderTotalPrice(order) {
+  //     let total = 0;
+  //     for (let product in order.products) {
+  //       total += order.products.price * order.products.quantity;
+  //     }
+  //     return parseInt(total);
+  //   },
+  // },
 };
 </script>

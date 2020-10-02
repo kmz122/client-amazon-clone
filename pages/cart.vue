@@ -202,6 +202,15 @@
                         >
                       </span>
 
+                      <span v-else-if="getCartLenght" class="a-button-inner">
+                        <nuxt-link
+                          v-b-modal.modal-1
+                          to="/placeholder"
+                          class="a-button-text"
+                          >Proceed to checkout</nuxt-link
+                        >
+                      </span>
+
                       <!-- <span v-else class="a-button-inner">
                         <nuxt-link to="/address/add" class="a-button-text"
                           >Proceed to checkout</nuxt-link

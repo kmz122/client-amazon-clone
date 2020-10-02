@@ -22,35 +22,41 @@
           <!-- Have to check with v-if bcs without login there is no homepage -->
           <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 pl-2">
             <div class="nav-global-location">
-              <nuxt-link to="/address" class="nav-a nav-a-2">
+              <nuxt-link
+                to="/address"
+                class="nav-a nav-a-2"
+                v-if="isAuthenticated"
+              >
                 <div class="nav-sprite" id="nav-packard-glow-loc-icon"></div>
                 <div
                   id="glow-ingress-block"
-                  v-if="$auth.$state.user && $auth.$state.user.address"
+                  v-if="loggedInUser && loggedInUser.address"
                 >
                   <span class="nav-line-1" id="glow-ingress-line1"
                     >Deliver to</span
                   >
                   <span
-                    v-if="$auth.$state.user.address"
+                    v-if="loggedInUser.address"
                     class="nav-line-2"
                     id="glow-ingress-line2"
-                    >{{ $auth.$state.user.address.city }},
-                    {{ $auth.$state.user.address.country }}</span
+                    >{{ loggedInUser.address.city }},
+                    {{ loggedInUser.address.country }}</span
                   >
-                  <!-- <span
-                    v-if="$auth.$state.user.address"
-                    class="nav-line-2"
-                    id="glow-ingress-line2"
-                    >{{ $auth.$state.user.address.city }},
-                    {{ $auth.$state.user.address.country }}</span
-                  >
-                  <span v-else class="nav-line-2" id="glow-ingress-line2">
-                    Add Your Address
-                  </span> -->
                 </div>
 
                 <div v-else id="glow-ingress-block">
+                  <span class="nav-line-1" id="glow-ingress-line1"
+                    >Deliver to</span
+                  >
+                  <span class="nav-line-2" id="glow-ingress-line2">
+                    Add Your Address
+                  </span>
+                </div>
+              </nuxt-link>
+
+              <nuxt-link to="/signup" class="nav-a nav-a-2" v-else>
+                <div class="nav-sprite" id="nav-packard-glow-loc-icon"></div>
+                <div id="glow-ingress-block">
                   <span class="nav-line-1" id="glow-ingress-line1"
                     >Deliver to</span
                   >
@@ -81,11 +87,15 @@
 
               <div class="nav-xshop-container">
                 <div class="nav-xshop">
-                  <a href="#" class="nav-a">Today's deals</a>
-                  <a href="#" class="nav-a">Your amazon.com</a>
-                  <a href="#" class="nav-a">Gift cards</a>
-                  <a href="#" class="nav-a">Registry</a>
-                  <a href="#" class="nav-a">Sell</a>
+                  <nuxt-link to="/todayDeals" class="nav-a"
+                    >Today's deals</nuxt-link
+                  >
+                  <nuxt-link to="/yourAmazon" class="nav-a"
+                    >Your amazon.com</nuxt-link
+                  >
+                  <nuxt-link to="/giftCard" class="nav-a">Gift cards</nuxt-link>
+                  <nuxt-link to="/registry" class="nav-a">Registry</nuxt-link>
+                  <nuxt-link to="/sell" class="nav-a">Sell</nuxt-link>
                 </div>
               </div>
             </div>

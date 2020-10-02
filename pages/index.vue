@@ -190,8 +190,6 @@
 import StarRating from "vue-star-rating";
 import FeatureProduct from "~/components/FeatureProduct";
 
-// window.location.reload(true);
-
 export default {
   components: {
     FeatureProduct,
@@ -202,7 +200,6 @@ export default {
     try {
       // let response = await $axios.$get("/api/products");
       let response = await $axios.$get("/api/products");
-      // console.log(response);
 
       return {
         // sucess: true,
@@ -213,6 +210,4 @@ export default {
     }
   },
 };
-
-// window.location.reload();
 </script>

@@ -138,7 +138,7 @@
                         <div class="row">
                           <!-- Product's photo -->
                           <div class="col-sm-3 col-3">
-                            <img :src="product.photo" style="width: 100px;" />
+                            <img :src="product.photo" style="width: 100px" />
                           </div>
                           <!-- Product's Title -->
                           <div class="col-sm-9 col-9">
@@ -273,7 +273,7 @@
                       </div>
                     </div>
                     <h3 class="a-spacing-micro a-size-base">Order Summary</h3>
-                    <div class="order-summary" style="font-size: 12px;">
+                    <div class="order-summary" style="font-size: 12px">
                       <div class="row">
                         <!-- Cart's total price -->
                         <div class="col-sm-6">Items:</div>
@@ -334,7 +334,7 @@
                         <a href="#">Selected payment currency</a>
                       </span>
                       <fieldset class="pl-3">
-                        <span style="margin-left: 1rem;">
+                        <span style="margin-left: 1rem">
                           <input
                             type="radio"
                             class="no-js-hide"
@@ -423,17 +423,20 @@ export default {
       //   shipment: "normal",
       // });
       let response = await $axios.$post("/api/shipment", {
-        shipment: "normal"
+        shipment: "normal",
       });
 
       store.commit("setShipping", {
         price: response.shipment.price,
-        estimatedDelivery: response.shipment.estimated
+        estimatedDelivery: response.shipment.estimated,
+        placedDate: response.shipment.placedDate,
       });
 
       return {
         shippingPrice: response.shipment.price,
-        estimatedDelivery: response.shipment.estimated
+        estimatedDelivery: response.shipment.estimated,
+        placedDate: response.shipment.placedDate,
+        // totalPrice: getCartTotalPriceWithShipping,
       };
     } catch (error) {
       console.log(error);
@@ -444,8 +447,8 @@ export default {
     ...mapGetters([
       "getCart",
       "getCartTotalPrice",
-      "getCartTotalPriceWithShipping"
-    ])
+      "getCartTotalPriceWithShipping",
+    ]),
   },
 
   methods: {
@@ -456,20 +459,23 @@ export default {
         // });
 
         let response = await this.$axios.$post("/api/shipment", {
-          shipment: shipment
+          shipment: shipment,
         });
 
         this.$store.commit("setShipping", {
           price: response.shipment.price,
-          estimatedDelivery: response.shipment.estimated
+          estimatedDelivery: response.shipment.estimated,
+          placedDate: response.shipment.placedDate,
         });
 
         this.shippingPrice = response.shipment.price;
         this.estimatedDelivery = response.shipment.estimated;
+        this.placedDate = response.shipment.placedDate;
+        // this.totalPrice = getCartTotalPriceWithShipping;
       } catch (error) {
         console.log(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>

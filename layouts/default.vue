@@ -14,9 +14,6 @@ export default {
     Navbar, // Navbar: Navbar
     Footer,
   },
-  props: {
-    msg: String,
-  },
 };
 </script>
 

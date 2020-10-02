@@ -3,7 +3,8 @@ export const state = () => ({
   cart: [],
   cartLength: 0,
   shippingPrice: 0,
-  shippingEstimatedDelivery: ""
+  shippingEstimatedDelivery: "",
+  orderPlacedDate: ""
 });
 
 export const actions = {
@@ -95,9 +96,10 @@ export const mutations = {
     state.cart.splice(state.cart.indexOf(product), 1);
   },
 
-  setShipping(state, { price, estimatedDelivery }) {
+  setShipping(state, { price, estimatedDelivery, placedDate }) {
     state.shippingPrice = price;
     state.shippingEstimatedDelivery = estimatedDelivery;
+    state.orderPlacedDate = placedDate;
   },
 
   clearCart(state) {
@@ -105,6 +107,7 @@ export const mutations = {
     state.cartLength = 0;
     state.shippingPrice = 0;
     state.shippingEstimatedDelivery = "";
+    state.orderPlacedDate = "";
   }
 };
 
@@ -140,6 +143,10 @@ export const getters = {
 
   getEstimatedDelivery(state) {
     return state.shippingEstimatedDelivery;
+  },
+
+  getOrderPlacedDate(state) {
+    return state.orderPlacedDate;
   },
 
   isAuthenticated(state) {
