@@ -116,7 +116,7 @@
               </a>
               <span class="icp-nav-link-border"></span>
 
-              <template v-if="$auth.$state.loggedIn">
+              <template v-if="isAuthenticated">
                 <nuxt-link
                   to="/profile"
                   class="nav-a nav-a-2"
@@ -124,7 +124,7 @@
                   tabindex="0"
                 >
                   <span class="nav-line-1">Hello,</span>
-                  <span class="nav-line-2">{{ $auth.$state.user.name }}</span>
+                  <span class="nav-line-2">{{ loggedInUser.name }}</span>
                 </nuxt-link>
               </template>
 
@@ -173,13 +173,14 @@
 <script>
 import { mapGetters } from "vuex";
 import Search from "~/components/Search";
+
 export default {
   components: {
-    Search
+    Search,
   },
 
   computed: {
-    ...mapGetters(["getCartLenght"])
-  }
+    ...mapGetters(["getCartLenght", "isAuthenticated", "loggedInUser"]),
+  },
 };
 </script>

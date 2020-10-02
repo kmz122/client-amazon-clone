@@ -18,7 +18,7 @@
                   class="a-input-text"
                   style="width: 100%"
                   v-model="name"
-                  :placeholder="$auth.$state.user.name"
+                  :placeholder="loggedInUser.name"
                 />
               </div>
 
@@ -30,7 +30,7 @@
                   class="a-input-text"
                   style="width: 100%"
                   v-model="email"
-                  :placeholder="$auth.$state.user.email"
+                  :placeholder="loggedInUser.email"
                 />
               </div>
 
@@ -69,45 +69,50 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
       name: "",
       email: "",
-      password: ""
+      password: "",
     };
+  },
+
+  computed: {
+    ...mapGetters(["isAuthenticated", "loggedInUser"]),
   },
 
   methods: {
     async onUpdateProfile() {
-      let data = {
-        name: this.name,
-        email: this.email,
-        password: this.password
-      };
       try {
-        // let response = await this.$axios.$put("api/auth/user ", data);
-        let response = await this.$axios.$put(
-          "https://api-amazon-clone.herokuapp.com/api/auth/user ",
-          data
-        );
+        let data = {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+        };
 
-        if (response.sucuess) {
+        // let response = await this.$axios.$put("api/auth/user ", data);
+        let response = await this.$axios.$put("/api/auth/user ", data);
+
+        if (response.success) {
           this.name = "";
           this.email = "";
           this.password = "";
 
           await this.$auth.fetchUser(); // refetch the api back
+          this.$router.push("/");
         }
       } catch (error) {
         console.log(error);
       }
     },
 
-    async onLogout() {
-      await this.$auth.logout();
+    onLogout() {
+      this.$auth.logout();
       this.$router.push("/");
-    }
-  }
+    },
+  },
 };
 </script>

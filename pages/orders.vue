@@ -195,9 +195,7 @@ export default {
   async asyncData({ $axios }) {
     try {
       // let response = await $axios.$get("/api/orders");
-      let response = await $axios.$get(
-        "https://api-amazon-clone.herokuapp.com/api/orders"
-      );
+      let response = await $axios.$get("/api/orders");
 
       console.log(response.products);
 

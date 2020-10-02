@@ -7,7 +7,9 @@
         <ul class="a-unordered-list a-horizontal a-size-small">
           <li>
             <span class="a-list-item">
-              <a class="a-link-normal a-color-tertiary" href="#">{{product.category.type}}</a>
+              <a class="a-link-normal a-color-tertiary" href="#">{{
+                product.category.type
+              }}</a>
             </span>
           </li>
           <li>
@@ -15,7 +17,9 @@
           </li>
           <li>
             <span class="a-list-item">
-              <a class="a-link-normal a-color-tertiary" href="#">{{product.title}}</a>
+              <a class="a-link-normal a-color-tertiary" href="#">{{
+                product.title
+              }}</a>
             </span>
           </li>
         </ul>
@@ -51,7 +55,7 @@
                     <!-- Author's Name -->
                     <div class="col-xl-4 col-lg-3 col-md-3 col-sm-3 col-3">
                       <div class="authorNameCol">
-                        <a href="#">{{product.owner.name}}</a>
+                        <a href="#">{{ product.owner.name }}</a>
                       </div>
                     </div>
                     <!-- Author's Follow Button -->
@@ -77,7 +81,7 @@
               <!-- Product Title -->
               <div class="titleDiv">
                 <h1 class="productTitle">
-                  <span class="largeTitle">{{product.title}}</span>
+                  <span class="largeTitle">{{ product.title }}</span>
                   <span class="smallTitle">Paperback</span>
                 </h1>
               </div>
@@ -85,7 +89,7 @@
               <div class="bylineinfo">
                 by
                 <a href="#" class="authorName">
-                  {{product.owner.name}}
+                  {{ product.owner.name }}
                   <i
                     class="fas fa-chevron-down"
                     style="font-size: 8px !important; color: #555 !important;"
@@ -105,7 +109,28 @@
                     :rounded-corners="true"
                     :read-only="true"
                     :star-size="18"
-                    :star-points="[23, 2, 14, 17, 0, 19, 10, 34, 7, 50, 23, 43, 38, 50, 36, 34, 46, 19, 31, 17]"
+                    :star-points="[
+                      23,
+                      2,
+                      14,
+                      17,
+                      0,
+                      19,
+                      10,
+                      34,
+                      7,
+                      50,
+                      23,
+                      43,
+                      38,
+                      50,
+                      36,
+                      34,
+                      46,
+                      19,
+                      31,
+                      17
+                    ]"
                   ></star-rating>
                 </client-only>
               </div>
@@ -115,7 +140,9 @@
                 <div class="formats">
                   <a href="#" class="link-expander">
                     >
-                    <span class="tmmShowPrompt">See all 18 formats and editions</span>
+                    <span class="tmmShowPrompt"
+                      >See all 18 formats and editions</span
+                    >
                   </a>
                   <ul>
                     <!-- Kindle -->
@@ -150,7 +177,11 @@
                           <span class="a-button-inner">
                             <a href="#" class="a-button-text">
                               <span>
-                                <img :src="product.photo" class="img-fluid" style="width: 20px;" />Audible
+                                <img
+                                  :src="product.photo"
+                                  class="img-fluid"
+                                  style="width: 20px;"
+                                />Audible
                               </span>
                               <br />
                               <span class="a-color-secondary">-</span>
@@ -162,7 +193,8 @@
                           <a href="#" class="a-size-mini">
                             <span class="kcpAppBox">
                               <span class="a-declarative">
-                                <span class="a-text-bold">Free App</span> with your Audible Trial
+                                <span class="a-text-bold">Free App</span> with
+                                your Audible Trial
                               </span>
                             </span>
                           </a>
@@ -188,7 +220,9 @@
               </div>
               <!-- Description -->
               <div class="bookDescription">
-                <div class="bookDescriptionInner">{{product.description}}</div>
+                <div class="bookDescriptionInner">
+                  {{ product.description }}
+                </div>
               </div>
 
               <!-- Product specification -->
@@ -218,7 +252,11 @@
                   <div class="clearfix">
                     <div class="float-left">
                       <form>
-                        <input type="radio" id="test1" name="radio-group checked" />
+                        <input
+                          type="radio"
+                          id="test1"
+                          name="radio-group checked"
+                        />
                         <label for="test1">Buy Now</label>
                       </form>
                     </div>
@@ -227,7 +265,8 @@
                     <div class="float-right">
                       <span
                         class="a-size-medium a-color-price offer-price a-text-normal"
-                      >${{product.price}}</span>
+                        >${{ product.price }}</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -255,24 +294,41 @@
                   <div class="a-section a-spacing-none">
                     <span class="a-size-medium a-color-success">In Stock</span>
                   </div>
-                  <div class="a-section a-spacing-mini">Ships from and sold by Amazon.com</div>
+                  <div class="a-section a-spacing-mini">
+                    Ships from and sold by Amazon.com
+                  </div>
                 </div>
 
                 <div class="a-section">
-                  <div class="a-button-stack" @click="addProductToCart(product)">
-                    <span class="a-spacing-small a-button-primary a-button-icon">
+                  <div
+                    class="a-button-stack"
+                    @click="addProductToCart(product)"
+                  >
+                    <span
+                      class="a-spacing-small a-button-primary a-button-icon"
+                    >
                       <span class="a-button-inner">
                         <i class="a-icon a-icon-cart"></i>
-                        <input type="submit" name="submit.add-to-cart" class="a-button-input" />
+                        <input
+                          type="submit"
+                          name="submit.add-to-cart"
+                          class="a-button-input"
+                        />
                         <span class="a-button-text">Add to Cart</span>
                       </span>
                     </span>
                   </div>
                   <div class="a-button-stack">
-                    <span class="a-spacing-small a-button-primary a-button-icon">
+                    <span
+                      class="a-spacing-small a-button-primary a-button-icon"
+                    >
                       <span class="a-button-inner">
                         <i class="a-icon a-icon-buynow"></i>
-                        <input type="submit" name="submit.add-to-cart" class="a-button-input" />
+                        <input
+                          type="submit"
+                          name="submit.add-to-cart"
+                          class="a-button-input"
+                        />
                         <span class="a-button-text">Buy Now</span>
                       </span>
                     </span>
@@ -310,7 +366,9 @@
                       </form>
                     </div>
                     <div class="float-right">
-                      <span class="a-color-base offer-price a-text-normal">$ {{product.price}}</span>
+                      <span class="a-color-base offer-price a-text-normal"
+                        >$ {{ product.price }}</span
+                      >
                     </div>
                   </div>
                 </div>
@@ -349,7 +407,7 @@
                 <div class="col-md-10 col-sm-8 col-8 pl-0">
                   <div class="mainContent">
                     <h3>Biography</h3>
-                    <div id="authorBio">{{product.owner.about}}</div>
+                    <div id="authorBio">{{ product.owner.about }}</div>
                   </div>
                 </div>
               </div>
@@ -371,7 +429,7 @@ import ReviewSection from "~/components/ReviewSection";
 export default {
   components: {
     ReviewSection,
-    StarRating,
+    StarRating
   },
 
   async asyncData({ $axios, params }) {
@@ -379,17 +437,17 @@ export default {
       // let singleProduct = $axios.$get(`/api/products/${params.id}`);
       // let manyReviews = $axios.$get(`/api/reviews/${params.id}`);
 
-      let singleProduct = $axios.$get(`https://api-amazon-clone.herokuapp.com/api/products/${params.id}`);
-      let manyReviews = $axios.$get(`https://api-amazon-clone.herokuapp.com/api/reviews/${params.id}`);
+      let singleProduct = $axios.$get(`/api/products/${params.id}`);
+      let manyReviews = $axios.$get(`/api/reviews/${params.id}`);
 
       const [productResponse, reviewsReponse] = await Promise.all([
         singleProduct,
-        manyReviews,
+        manyReviews
       ]);
 
       return {
         product: productResponse.product,
-        reviews: reviewsReponse.reviews,
+        reviews: reviewsReponse.reviews
       };
     } catch (error) {
       console.log("response product or reviews error");
@@ -398,7 +456,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["addProductToCart"]),
-  },
+    ...mapActions(["addProductToCart"])
+  }
 };
 </script>

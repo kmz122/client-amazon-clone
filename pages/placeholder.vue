@@ -422,12 +422,9 @@ export default {
       // let response = await $axios.$post("/api/shipment", {
       //   shipment: "normal",
       // });
-      let response = await $axios.$post(
-        "https://api-amazon-clone.herokuapp.com/api/shipment",
-        {
-          shipment: "normal"
-        }
-      );
+      let response = await $axios.$post("/api/shipment", {
+        shipment: "normal"
+      });
 
       store.commit("setShipping", {
         price: response.shipment.price,
@@ -458,12 +455,9 @@ export default {
         //   shipment: shipment,
         // });
 
-        let response = await this.$axios.$post(
-          "https://api-amazon-clone.herokuapp.com/api/shipment",
-          {
-            shipment: shipment
-          }
-        );
+        let response = await this.$axios.$post("/api/shipment", {
+          shipment: shipment
+        });
 
         this.$store.commit("setShipping", {
           price: response.shipment.price,

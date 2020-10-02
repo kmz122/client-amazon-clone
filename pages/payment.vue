@@ -128,15 +128,12 @@ export default {
         //   estimatedDelivery: this.getEstimatedDelivery,
         // });
 
-        let response = await this.$axios.$post(
-          "https://api-amazon-clone.herokuapp.com/api/payment",
-          {
-            token: this.token,
-            totalPrice: this.getCartTotalPriceWithShipping,
-            cart: this.getCart,
-            estimatedDelivery: this.getEstimatedDelivery
-          }
-        );
+        let response = await this.$axios.$post("/api/payment", {
+          token: this.token,
+          totalPrice: this.getCartTotalPriceWithShipping,
+          cart: this.getCart,
+          estimatedDelivery: this.getEstimatedDelivery
+        });
 
         if (response.success) {
           // Do something

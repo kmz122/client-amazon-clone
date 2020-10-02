@@ -79,8 +79,9 @@
                                 :key="i"
                                 :value="i"
                                 :selected="checkQty(product.quantity, i)"
-                                >Qty: &nbsp;{{ i }}</option
                               >
+                                Qty: &nbsp;{{ i }}
+                              </option>
                             </select>
                             &nbsp;&nbsp;
                             <span>|</span>
@@ -130,7 +131,7 @@
             </div>
           </div>
           <div class="col-lg-3 col-md-4 col-sm-5">
-            <div class="a-box-group" style="margin-bottom: 14px;">
+            <div class="a-box-group" style="margin-bottom: 14px">
               <div class="a-box a-color-alternate-background">
                 <div class="a-box-inner">
                   <div class="a-spacing-mini">
@@ -170,10 +171,7 @@
                         >
                       </span>
 
-                      <span
-                        class="a-button-inner"
-                        v-else-if="!$auth.$state.user"
-                      >
+                      <span class="a-button-inner" v-else-if="!isAuthenticated">
                         <b-modal id="modal-2" title="">
                           <p class="my-4">Login or signup first!</p>
                         </b-modal>
@@ -188,7 +186,7 @@
 
                       <span
                         class="a-button-inner"
-                        v-else-if="!$auth.$state.user.address"
+                        v-else-if="!loggedInUser.address"
                       >
                         <b-modal id="modal-3" title="">
                           <p class="my-4">
@@ -288,7 +286,13 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["getCart", "getCartTotalPrice", "getCartLenght"])
+    ...mapGetters([
+      "getCart",
+      "getCartTotalPrice",
+      "getCartLenght",
+      "isAuthenticated",
+      "loggedInUser",
+    ]),
   },
 
   methods: {
@@ -300,11 +304,11 @@ export default {
     checkQty(prodQty, qty) {
       if (parseInt(prodQty) === parseInt(qty)) return true;
       return false;
-    }
+    },
 
     // delProd(product) {
     //   this.$store.commit("deleteProduct", product);
     // },
-  }
+  },
 };
 </script>

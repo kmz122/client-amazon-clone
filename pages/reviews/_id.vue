@@ -134,9 +134,7 @@ export default {
   async asyncData({ $axios, params }) {
     try {
       // let response = await $axios.$get(`/api/products/${params.id}`);
-      let response = await $axios.$get(
-        `https://api-amazon-clone.herokuapp.com/api/products/${params.id}`
-      );
+      let response = await $axios.$get(`/api/products/${params.id}`);
 
       return {
         product: response.product
@@ -176,7 +174,7 @@ export default {
         // );
 
         let response = await this.$axios.$post(
-          `https://api-amazon-clone.herokuapp.com/api/reviews/${this.$route.params.id}`,
+          `/api/reviews/${this.$route.params.id}`,
           data
         );
 

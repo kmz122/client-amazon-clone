@@ -25,6 +25,7 @@
                     class="a-input-text form-control auth-autofocus auth-required-field auth-contact-verification-request-info"
                     id="ap-customer-name"
                     v-model="name"
+                    required
                   />
                 </div>
 
@@ -39,7 +40,9 @@
                     class="a-input-text form-control auth-autofocus auth-required-field auth-contact-verification-request-info"
                     id="ap-customer-name"
                     v-model="email"
+                    required
                   />
+                  <span v-if="em">{{ em }}</span>
                 </div>
 
                 <!-- Password -->
@@ -53,7 +56,10 @@
                     class="a-input-text form-control auth-autofocus auth-required-field auth-contact-verification-request-info"
                     id="ap-customer-name"
                     v-model="password"
+                    required
+                    v-on:keyup.enter="onSingup"
                   />
+                  <span v-if="pm">{{ pm }}</span>
                 </div>
                 <div class="a-alert-container">
                   <div class="a-alert-content">
@@ -101,41 +107,69 @@ export default {
   auth: "guest",
   layout: "none",
 
+  props: {
+    msg: String,
+  },
+
   data() {
     return {
       name: "",
       email: "",
-      password: ""
+      password: "",
+      em: "",
+      pm: "",
     };
   },
 
+  watch: {
+    email(value) {
+      // binding this to the data value in the email input
+      this.email = value;
+      this.validateEmail(value);
+    },
+    password(value) {
+      this.password = value;
+      this.validatePassword(value);
+    },
+  },
+
   methods: {
+    validateEmail(value) {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+        this.em = "";
+      } else {
+        this.em = "example@email.com";
+      }
+    },
+    validatePassword(value) {
+      let difference = 8 - value.length;
+      if (value.length < 8) {
+        this.pm = "Must be 8 characters! " + difference + " characters left";
+      } else {
+        this.pm = "";
+      }
+    },
+
     async onSingup() {
       try {
         let data = {
           name: this.name,
           email: this.email,
-          password: this.password
+          password: this.password,
         };
 
         // let response = await this.$axios.$post("/api/auth/signup", data);
-        let response = await this.$axios.$post(
-          "https://api-amazon-clone.herokuapp.com/api/auth/signup",
-          data
-        );
+        let response = await this.$axios.$post("/api/auth/signup", data);
 
-        console.log(response);
-        console.log("response step is finished!");
+        // console.log(response);
+        // console.log("response step is finished!");
 
         if (response.sucess) {
-          console.log(
-            "axios post is working, and store email&pswd and call the loginWith"
-          );
           this.$auth.loginWith("local", {
             data: {
               email: this.email,
-              password: this.password
-            }
+              password: this.password,
+            },
           });
 
           this.$router.push("/");
@@ -144,7 +178,7 @@ export default {
         console.log(error);
         console.log("Above is error for auth");
       }
-    }
-  }
+    },
+  },
 };
 </script>

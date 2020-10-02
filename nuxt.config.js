@@ -1,3 +1,4 @@
+let development = process.env.NODE_ENV !== "production";
 // const SERVER_URL =
 //   `http://localhost:${process.env.NODE_ENV}` || "http://localhost:3000";
 const SERVER_URL = "https://api-amazon-clone.herokuapp.com";
@@ -70,12 +71,14 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    proxy: true,
-    baseURL: SERVER_URL
+    proxy: true
+    // baseURL: SERVER_URL
   },
 
   proxy: {
-    "/api": SERVER_URL
+    "/api": development
+      ? "http://localhost:3000"
+      : "https://api-amazon-clone.herokuapp.com"
   },
   /*
    ** Content module configuration

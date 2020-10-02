@@ -165,7 +165,7 @@
                                     46,
                                     19,
                                     31,
-                                    17
+                                    17,
                                   ]"
                                 ></star-rating>
                                 <!-- </no-ssr> -->
@@ -190,27 +190,29 @@
 import StarRating from "vue-star-rating";
 import FeatureProduct from "~/components/FeatureProduct";
 
+// window.location.reload(true);
+
 export default {
   components: {
     FeatureProduct,
-    StarRating
+    StarRating,
   },
 
   async asyncData({ $axios }) {
     try {
       // let response = await $axios.$get("/api/products");
-      let response = await $axios.$get(
-        "https://api-amazon-clone.herokuapp.com/api/products"
-      );
+      let response = await $axios.$get("/api/products");
       // console.log(response);
 
       return {
         // sucess: true,
-        products: response.products
+        products: response.products,
       };
     } catch (error) {
       console.log(error);
     }
-  }
+  },
 };
+
+// window.location.reload();
 </script>

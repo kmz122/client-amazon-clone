@@ -37,9 +37,7 @@
                   Or pick up your packages at your convenience from our
                   self-service locations. To add an Amazon Pickup Point or
                   Locker, click
-                  <a
-                    href="#"
-                  >here</a>.
+                  <a href="#">here</a>.
                 </b>
               </div>
               <!-- Error Message -->
@@ -56,14 +54,20 @@
                         v-for="country in countries"
                         :key="country.alpha2Code"
                         :value="country.name"
-                      >{{ country.name }}</option>
+                        >{{ country.name }}</option
+                      >
                       <option></option>
                     </select>
                   </div>
                   <!-- Full name -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Full Name</label>
-                    <input type="text" class="a-input-text" style="width: 100%;" v-model="fullName" />
+                    <input
+                      type="text"
+                      class="a-input-text"
+                      style="width: 100%;"
+                      v-model="fullName"
+                    />
                   </div>
                   <!-- Street Address -->
                   <div class="a-spacing-top-medium">
@@ -87,17 +91,34 @@
                   <!-- City -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">City</label>
-                    <input type="text" class="a-input-text" style="width: 100%;" v-model="city" />
+                    <input
+                      type="text"
+                      class="a-input-text"
+                      style="width: 100%;"
+                      v-model="city"
+                    />
                   </div>
                   <!-- State -->
                   <div class="a-spacing-top-medium">
-                    <label style="margin-bottom: 0px;">State / Province / Region</label>
-                    <input type="text" class="a-input-text" style="width: 100%;" v-model="state" />
+                    <label style="margin-bottom: 0px;"
+                      >State / Province / Region</label
+                    >
+                    <input
+                      type="text"
+                      class="a-input-text"
+                      style="width: 100%;"
+                      v-model="state"
+                    />
                   </div>
                   <!-- Zip Code -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Zip Code</label>
-                    <input type="text" class="a-input-text" style="width: 100%;" v-model="zipCode" />
+                    <input
+                      type="text"
+                      class="a-input-text"
+                      style="width: 100%;"
+                      v-model="zipCode"
+                    />
                   </div>
                   <!-- Phone Number -->
                   <div class="a-spacing-top-medium">
@@ -109,7 +130,9 @@
                       v-model="phoneNumber"
                     />
                     <div class="a-section a-spacing-none a-spacing-top-micro">
-                      <span class="a-size-mini">May be used to assist delivery</span>
+                      <span class="a-size-mini"
+                        >May be used to assist delivery</span
+                      >
                     </div>
                   </div>
                   <div class="a-spacing-base a-spacing-top-medium">
@@ -118,8 +141,7 @@
                   <!-- Delivery Instruction -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">
-                      Do we need additional instructions to find this
-                      address?
+                      Do we need additional instructions to find this address?
                     </label>
                     <textarea
                       placeholder="Provide details such as building description, a nearby landmark, or other navigation instructions"
@@ -173,7 +195,9 @@
                   <div class="a-spacing-top-large">
                     <span class="a-button-register">
                       <span class="a-button-inner">
-                        <span class="a-button-text" @click="onAddAddress">Add address</span>
+                        <span class="a-button-text" @click="onAddAddress"
+                          >Add address</span
+                        >
                       </span>
                     </span>
                   </div>
@@ -195,11 +219,10 @@ export default {
   async asyncData({ $axios }) {
     try {
       // let response = await $axios.$get("/api/countries");
-      let response = await $axios.$get("https://api-amazon-clone.herokuapp.com/api/countries");
-      
+      let response = await $axios.$get("/api/countries");
 
       return {
-        countries: response,
+        countries: response
       };
     } catch (error) {
       console.log(error);
@@ -217,7 +240,7 @@ export default {
       zipCode: "",
       phoneNumber: "",
       deliverInstructions: "",
-      securityCode: "",
+      securityCode: ""
     };
   },
 
@@ -233,12 +256,11 @@ export default {
           zipCode: this.zipCode,
           phoneNumber: this.phoneNumber,
           deliverInstructions: this.deliverInstructions,
-          securityCode: this.securityCode,
+          securityCode: this.securityCode
         };
 
         // let response = await this.$axios.$post("/api/addresses", data);
-        let response = await this.$axios.$post("https://api-amazon-clone.herokuapp.com/api/addresses", data);
-        
+        let response = await this.$axios.$post("/api/addresses", data);
 
         if (response.success) {
           this.$router.push("/address"); // ("/address")
@@ -246,7 +268,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-  },
+    }
+  }
 };
 </script>

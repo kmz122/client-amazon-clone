@@ -37,9 +37,7 @@
                   Or pick up your packages at your convenience from our
                   self-service locations. To add an Amazon Pickup Point or
                   Locker, click
-                  <a
-                    href="#"
-                  >here</a>.
+                  <a href="#">here</a>.
                 </b>
               </div>
               <!-- Error Message -->
@@ -56,7 +54,8 @@
                         v-for="country in countries"
                         :key="country.alpha2Code"
                         :value="country.name"
-                      >{{ country.name }}</option>
+                        >{{ country.name }}</option
+                      >
                       <option></option>
                     </select>
                   </div>
@@ -102,7 +101,9 @@
                   </div>
                   <!-- State -->
                   <div class="a-spacing-top-medium">
-                    <label style="margin-bottom: 0px;">State / Province / Region</label>
+                    <label style="margin-bottom: 0px;"
+                      >State / Province / Region</label
+                    >
                     <input
                       type="text"
                       class="a-input-text"
@@ -133,7 +134,9 @@
                       :placeholder="address.phoneNumber"
                     />
                     <div class="a-section a-spacing-none a-spacing-top-micro">
-                      <span class="a-size-mini">May be used to assist delivery</span>
+                      <span class="a-size-mini"
+                        >May be used to assist delivery</span
+                      >
                     </div>
                   </div>
                   <div class="a-spacing-base a-spacing-top-medium">
@@ -142,8 +145,7 @@
                   <!-- Delivery Instruction -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">
-                      Do we need additional instructions to find this
-                      address?
+                      Do we need additional instructions to find this address?
                     </label>
                     <textarea
                       :placeholder="address.deliverInstructions"
@@ -197,7 +199,9 @@
                   <div class="a-spacing-top-large">
                     <span class="a-button-register">
                       <span class="a-button-inner">
-                        <span class="a-button-text" @click="onUpdateAddress">Update address</span>
+                        <span class="a-button-text" @click="onUpdateAddress"
+                          >Update address</span
+                        >
                       </span>
                     </span>
                   </div>
@@ -240,18 +244,17 @@ export default {
       // let countryData = $axios.$get(`/api/countries`);
       // let singleAddress = $axios.$get(`/api/addresses/${params.id}`);
 
-      let countryData = $axios.$get(`https://api-amazon-clone.herokuapp.com/api/countries`);
-      let singleAddress = $axios.$get(`https://api-amazon-clone.herokuapp.com/api/addresses/${params.id}`);
-      
+      let countryData = $axios.$get(`/api/countries`);
+      let singleAddress = $axios.$get(`/api/addresses/${params.id}`);
 
       const [countryResponse, addressReponse] = await Promise.all([
         countryData,
-        singleAddress,
+        singleAddress
       ]);
 
       return {
         countries: countryResponse,
-        address: addressReponse.address,
+        address: addressReponse.address
       };
     } catch (error) {
       console.log("countryData or singleAddress = response error");
@@ -270,7 +273,7 @@ export default {
       zipCode: "",
       phoneNumber: "",
       deliverInstructions: "",
-      securityCode: "",
+      securityCode: ""
     };
   },
 
@@ -286,7 +289,7 @@ export default {
           zipCode: this.zipCode,
           phoneNumber: this.phoneNumber,
           deliverInstructions: this.deliverInstructions,
-          securityCode: this.securityCode,
+          securityCode: this.securityCode
         };
 
         // let response = await this.$axios.$put(
@@ -299,12 +302,10 @@ export default {
         //   data
         // );
 
-
         let response = await this.$axios.$put(
-          `https://api-amazon-clone.herokuapp.com/api/addresses/${this.$route.params.id}`,
+          `/api/addresses/${this.$route.params.id}`,
           data
         );
-        
 
         if (response.success) {
           this.$router.push("/address"); // ("/address")
@@ -312,7 +313,7 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-  },
+    }
+  }
 };
 </script>

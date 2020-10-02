@@ -115,9 +115,7 @@ export default {
   async asyncData({ $axios }) {
     try {
       // let allAddress = await $axios.$get("/api/addresses");
-      let allAddress = await $axios.$get(
-        "https://api-amazon-clone.herokuapp.com/api/addresses"
-      );
+      let allAddress = await $axios.$get("/api/addresses");
 
       return {
         addresses: allAddress.addresses
@@ -137,9 +135,7 @@ export default {
     async onDeleteAddress(id, index) {
       try {
         // let response = await this.$axios.$delete(`/api/addresses/${id}`);
-        let response = await this.$axios.$delete(
-          `https://api-amazon-clone.herokuapp.com/api/addresses/${id}`
-        );
+        let response = await this.$axios.$delete(`/api/addresses/${id}`);
 
         if (response.success) {
           this.message = response.message;
@@ -153,12 +149,9 @@ export default {
 
     async onSetDefaultAddress(id) {
       try {
-        let response = await this.$axios.$put(
-          `https://api-amazon-clone.herokuapp.com/api/addresses/set/default`,
-          {
-            id: id
-          }
-        );
+        let response = await this.$axios.$put(`/api/addresses/set/default`, {
+          id: id
+        });
 
         if (response.success) {
           this.message = response.message;
