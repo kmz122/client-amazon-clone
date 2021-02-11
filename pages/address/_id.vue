@@ -220,25 +220,6 @@
 
 <script>
 export default {
-  //   async asyncData({ $axios, params }) {
-  //     try {
-  //       let response = $axios.$get("/api/countries");
-  //       let singelAddress = $axios.$get("`/api/addresses/${params.id}`");
-
-  //       let [countryResponse, addressResponse] = await Promise.all([
-  //         response,
-  //         singelAddress,
-  //       ]);
-
-  //       return {
-  //         countries: countryResponse,
-  //         address: addressResponse.address,
-  //       };
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   },
-
   async asyncData({ $axios, params }) {
     try {
       // let countryData = $axios.$get(`/api/countries`);

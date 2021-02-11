@@ -34,13 +34,6 @@
                             class="img-fluid"
                             alt="product_photo"
                           />
-
-                          <!-- <img
-                            src="/img/featureProduct.jpg"
-                            style="width: 150px"
-                            class="img-fluid"
-                            alt="product_photo"
-                          />-->
                         </a>
                       </div>
 

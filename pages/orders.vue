@@ -208,15 +208,5 @@ export default {
       console.log(error);
     }
   },
-
-  // methods: {
-  //   orderTotalPrice(order) {
-  //     let total = 0;
-  //     for (let product in order.products) {
-  //       total += order.products.price * order.products.quantity;
-  //     }
-  //     return parseInt(total);
-  //   },
-  // },
 };
 </script>

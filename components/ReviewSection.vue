@@ -187,8 +187,7 @@
         <div class="col-lg-6 col-md-7 col-sm-12">
           <div class="reviews-image-gallery">
             <h3>Customer images</h3>
-            <!-- R
-            eview Images -->
+            <!-- Review Images -->
             <div class="a-spacing-small a-spacing-top-small">
               <img
                 class="img-fluid"

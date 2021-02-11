@@ -122,13 +122,6 @@ export default {
       try {
         let token = await this.stripe.createToken(this.card);
 
-        // let response = await this.$axios.$post("/api/payment", {
-        //   token: this.token,
-        //   totalPrice: this.getCartTotalPriceWithShipping,
-        //   cart: this.getCart,
-        //   estimatedDelivery: this.getEstimatedDelivery,
-        // });
-
         let response = await this.$axios.$post("/api/payment", {
           token: this.token,
           totalPrice: this.getCartTotalPriceWithShipping,
@@ -138,7 +131,6 @@ export default {
         });
 
         if (response.success) {
-          // Do something
           // clear the cart
           this.$store.commit("clearCart");
 
