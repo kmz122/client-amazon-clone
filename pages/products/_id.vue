@@ -318,18 +318,21 @@
                       </span>
                     </span>
                   </div>
-                  <div class="a-button-stack">
+                  <div class="a-button-stack" @click="addProductToCart(product)">
                     <span
                       class="a-spacing-small a-button-primary a-button-icon"
                     >
                       <span class="a-button-inner">
-                        <i class="a-icon a-icon-buynow"></i>
-                        <input
-                          type="submit"
-                          name="submit.add-to-cart"
-                          class="a-button-input"
-                        />
-                        <span class="a-button-text">Buy Now</span>
+                        <nuxt-link to="/cart">
+                          <i class="a-icon a-icon-buynow"></i>
+                          <input
+                            type="submit"
+                            name="submit.add-to-cart"
+                            class="a-button-input"
+                          />
+                          <span class="a-button-text">Buy Now</span>
+                          
+                        </nuxt-link>
                       </span>
                     </span>
                   </div>
